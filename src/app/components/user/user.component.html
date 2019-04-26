@@ -1,0 +1,65 @@
+<div class="container">
+  <div class="row">
+    <div class="col col-md-3 ">
+      <h3> Informations about user</h3>
+      <div>
+          <label for=""> Name of user : {{name}}</label> <br>
+          <label for=""> Age : {{age}} </label> <br>
+          <label for=""> Address: {{address.state}},{{address.city}} </label> <br>
+         
+         <button (click)="onClick()"> Click Me </button>
+          <button (click)="toggleEdit()">EditUser</button>
+        <div *ngIf=isEdit>
+        <h1>Edit user</h1>
+        <form action="">
+          <div>
+            <label for="name">Name: </label> <br>
+            <input type="text" [(ngModel)]="name" name="name">
+          </div>
+          <div>
+            <label for="name">Age: </label> <br>
+            <input type="number" [(ngModel)]="age" name="age">
+          </div>
+          <div>
+            <label for="name">Email: </label> <br>
+            <input type="text" [(ngModel)]="email" name="email">
+          </div>
+          <div>
+            <label for="name">Street: </label><br>
+            <input type="text" [(ngModel)]="address.street" name="street">
+          </div>
+          <div>
+            <label for="name">City: </label> <br>
+            <input type="text" [(ngModel)]="address.city" name="city">
+          </div>
+          <div>
+            <label for="name">State: </label> <br> 
+            <input type="text" [(ngModel)]="address.state" name="state">
+          </div>
+        </form>
+        </div>
+          <h4>Hobbies</h4>
+
+          <form (submit)="addHobby(hobby.value)">
+            <div>
+              <label for="hobby">Hobby:</label>
+              <input type="text" #hobby>
+            </div>
+          </form>
+
+          <ul>
+            <li *ngFor="let hobby of hobbies; let i = index">{{i+1}}: {{hobby}}
+            <button (click)="deleteHobby(hobby)">X</button> </li>
+          </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<h1>Posts</h1>
+<div *ngFor="let post of posts">
+  <h4> {{post.title}} </h4> 
+  <p> {{post.body}}</p>
+
+</div>
